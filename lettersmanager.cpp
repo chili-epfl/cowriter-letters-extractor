@@ -25,5 +25,6 @@ void LettersManager::init()
     //scene.setSceneRect( -100.0, -100.0, 200.0, 200.0 );
     _scene.addItem(currentInputSheet);
     _scene.addRect(QRectF(0, 0, 210,200), QColor::fromRgbF(0.,1.,1.));
+    _scene.addItem(&currentLetterSelector);
 }
 

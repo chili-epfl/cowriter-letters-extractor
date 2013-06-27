@@ -23,6 +23,7 @@ private:
     // thanks to ness, http://www.qtfr.org/viewtopic.php?id=12482, for mid button panning
     QPointF _reference, _centerView;
 
+
 signals:
     
 public slots:

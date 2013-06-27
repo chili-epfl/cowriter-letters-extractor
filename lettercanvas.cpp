@@ -9,7 +9,6 @@ LetterCanvas::LetterCanvas(QGraphicsScene *scene, QWidget *parent) :
     QGraphicsView(scene, parent)
 {
 
-
     //setDragMode(QGraphicsView::ScrollHandDrag);
     setRenderHints( QPainter::Antialiasing );
     show();
@@ -17,7 +16,9 @@ LetterCanvas::LetterCanvas(QGraphicsScene *scene, QWidget *parent) :
 
 void LetterCanvas::wheelEvent(QWheelEvent *event)
 {
-    scaleView(pow((double)2, event->delta() / 240.0));
+    //scaleView(pow((double)2, event->delta() / 240.0));
+
+    QGraphicsView::wheelEvent(event);
 }
 
 void LetterCanvas::scaleView(qreal scaleFactor)
@@ -35,6 +36,15 @@ void LetterCanvas::mousePressEvent(QMouseEvent *event) {
         _reference = mapToScene(event->pos());
         _centerView = mapToScene(this->viewport()->rect()).boundingRect().center();
         return;
+    }
+    // save a bitmap
+    else if (event->button() == Qt::LeftButton) {
+        QImage image(600,600,QImage::Format_ARGB32);
+        QPainter painter(&image);
+        painter.setRenderHint(QPainter::Antialiasing);
+        scene()->render(&painter, QRectF(), QRectF(300, 300, 600, 600));
+        image.save("/home/lemaigna/tmp.png");
+
     }
 
     QGraphicsView::mousePressEvent(event);

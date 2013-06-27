@@ -6,6 +6,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 
+#include "letterselector.h"
+
 class LettersManager
 {
 public:
@@ -22,6 +24,7 @@ private:
     QGraphicsScene _scene;
 
     QGraphicsPixmapItem* currentInputSheet;
+    LetterSelector currentLetterSelector;
 };
 
 #endif // LETTERSMANAGER_H

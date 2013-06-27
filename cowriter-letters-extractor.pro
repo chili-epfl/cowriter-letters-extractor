@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         letterswindow.cpp \
     lettercanvas.cpp \
-    lettersmanager.cpp
+    lettersmanager.cpp \
+    letterselector.cpp
 
 HEADERS  += letterswindow.h \
     lettercanvas.h \
-    lettersmanager.h
+    lettersmanager.h \
+    letterselector.h
 
 FORMS    += letterswindow.ui
 
