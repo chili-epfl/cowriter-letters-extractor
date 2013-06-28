@@ -5,9 +5,12 @@
 #include <QGraphicsScene>
 #include "letterselector.h"
 
+#include <iostream>
+using namespace std;
+
 LetterSelector::LetterSelector(QGraphicsItem *parent)
     : QGraphicsObject(parent),
-      _rotation(0),
+      _rotation(0), _scale(1.0),
       font(QFont().defaultFamily(), FONT_SIZE)
 {
     setAcceptHoverEvents(true);
@@ -38,8 +41,15 @@ void LetterSelector::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
 
 void LetterSelector::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
-        _rotation += event->delta()/240. * 2;
+    if (isScaling) {
+        _scale += (event->delta()/240.) / 10.;
+        setScale(_scale);
+    }
+    else
+    {
+        _rotation += event->delta()/240. * 3;
         setRotation(_rotation);
+    }
 }
 
 

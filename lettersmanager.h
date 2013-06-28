@@ -5,7 +5,9 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <QKeyEvent>
 
+#include "lettersscene.h"
 #include "letterselector.h"
 
 class LettersManager
@@ -18,13 +20,16 @@ public:
 
     void setInputSheet(const std::string& file);
 
+    void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+
 private:
     LettersManager(const LettersManager&);
     void init();
-    QGraphicsScene _scene;
+    LettersScene _scene;
 
     QGraphicsPixmapItem* currentInputSheet;
-    LetterSelector currentLetterSelector;
+    LetterSelector _selector;
 };
 
 #endif // LETTERSMANAGER_H

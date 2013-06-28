@@ -16,12 +16,14 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
     void setLetter(const QString& letter) {_letter = letter;}
+    void doScaling(bool state) {isScaling = state;}
 
 protected:
     void wheelEvent(QGraphicsSceneWheelEvent *event);
     void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
 
 private:
+    bool isScaling = false;
     float _rotation, _scale;
     QString _letter;
 

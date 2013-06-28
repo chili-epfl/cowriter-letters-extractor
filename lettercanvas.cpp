@@ -16,7 +16,7 @@ LetterCanvas::LetterCanvas(QGraphicsScene *scene, QWidget *parent) :
 
 void LetterCanvas::wheelEvent(QWheelEvent *event)
 {
-    //scaleView(pow((double)2, event->delta() / 240.0));
+    if (zoomEnabled) {scaleView(pow((double)2, event->delta() / 240.0));}
 
     QGraphicsView::wheelEvent(event);
 }
@@ -68,4 +68,21 @@ void LetterCanvas::mouseReleaseEvent(QMouseEvent *event) {
     }
 
     QGraphicsView::mouseReleaseEvent(event);
+}
+
+void LetterCanvas::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+        case Qt::Key_Control:
+            zoomEnabled = true;
+            break;
+    }
+
+    QGraphicsView::keyPressEvent(event);
+}
+
+void LetterCanvas::keyReleaseEvent(QKeyEvent *event)
+{
+    zoomEnabled = false;
+    QGraphicsView::keyPressEvent(event);
 }

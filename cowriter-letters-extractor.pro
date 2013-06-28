@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         letterswindow.cpp \
     lettercanvas.cpp \
     lettersmanager.cpp \
-    letterselector.cpp
+    letterselector.cpp \
+    lettersscene.cpp
 
 HEADERS  += letterswindow.h \
     lettercanvas.h \
     lettersmanager.h \
-    letterselector.h
+    letterselector.h \
+    lettersscene.h
 
 FORMS    += letterswindow.ui
 
