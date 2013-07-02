@@ -5,8 +5,9 @@
 #include "lettercanvas.h"
 
 
-LetterCanvas::LetterCanvas(QGraphicsScene *scene, QWidget *parent) :
-    QGraphicsView(scene, parent)
+LetterCanvas::LetterCanvas(LettersManager *manager, QWidget *parent) :
+    QGraphicsView(&manager->scene(), parent),
+    _manager(manager)
 {
 
     //setDragMode(QGraphicsView::ScrollHandDrag);
@@ -39,14 +40,10 @@ void LetterCanvas::mousePressEvent(QMouseEvent *event) {
     }
     // save a bitmap
     else if (event->button() == Qt::LeftButton) {
-        QImage image(600,600,QImage::Format_ARGB32);
-        QPainter painter(&image);
-        painter.setRenderHint(QPainter::Antialiasing);
-        scene()->render(&painter, QRectF(), QRectF(300, 300, 600, 600));
-        image.save("/home/lemaigna/tmp.png");
-
-    }
-
+        _manager->saveCurrentSelection();
+		
+	}
+	
     QGraphicsView::mousePressEvent(event);
 }
 

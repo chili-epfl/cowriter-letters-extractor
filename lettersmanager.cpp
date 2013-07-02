@@ -1,5 +1,6 @@
 
 #include "lettersmanager.h"
+#include "lettersaver.h"
 
 using namespace std;
 
@@ -33,6 +34,23 @@ void LettersManager::keyPressEvent(QKeyEvent *event)
 void LettersManager::keyReleaseEvent(QKeyEvent *event)
 {
     _selector.doScaling(false);
+}
+
+void LettersManager::saveCurrentSelection()
+{
+    LetterSaver saver(scene(), "/home/lemaigna/toto.png");
+    _selector.setVisible(false);
+
+    //Rotate the letter sheet according to letter selector orientation
+    currentInputSheet->setTransformOriginPoint(_selector.unrotatedBounds().center());
+    currentInputSheet->setRotation(-_selector.rotation());
+
+    saver.save(_selector.unrotatedBounds());
+
+    currentInputSheet->setRotation(0);
+
+    _selector.setVisible(true);
+
 }
 
 

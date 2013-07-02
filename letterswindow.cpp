@@ -6,7 +6,7 @@
 
 LettersWindow::LettersWindow(LettersManager& manager, QWidget *parent) :
     QMainWindow(parent),
-    _canvas(&manager.scene()),
+    _canvas(&manager),
     ui(new Ui::LettersWindow)
 {
     ui->setupUi(this);

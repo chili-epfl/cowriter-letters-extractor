@@ -4,11 +4,13 @@
 #include <QGraphicsView>
 #include <QPointF>
 
+#include "lettersmanager.h"
+
 class LetterCanvas : public QGraphicsView
 {
     Q_OBJECT
 public:
-    explicit LetterCanvas(QGraphicsScene * scene, QWidget *parent = 0);
+    explicit LetterCanvas(LettersManager * scene, QWidget *parent = 0);
     
     void wheelEvent(QWheelEvent *event);
 
@@ -28,6 +30,7 @@ private:
 
     bool zoomEnabled = false;
 
+    LettersManager* _manager;
 
 signals:
     

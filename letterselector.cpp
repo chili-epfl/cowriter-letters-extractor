@@ -1,5 +1,6 @@
 #include <QPainter>
 #include <QKeyEvent>
+#include <QPolygonF>
 #include <QGraphicsSceneWheelEvent>
 #include <QGraphicsSceneHoverEvent>
 #include <QGraphicsScene>
@@ -13,9 +14,12 @@ LetterSelector::LetterSelector(QGraphicsItem *parent)
       _rotation(0), _scale(1.0),
       font(QFont().defaultFamily(), FONT_SIZE)
 {
+
+    _ratio = boundingRect().width() / boundingRect().height();
+
     setAcceptHoverEvents(true);
     //setFlag(QGraphicsItem::ItemIsFocusable );
-    setPos(400, 400);
+    setPos(600, 600);
 
     QString alpha;
     alpha.resize(1);
@@ -37,6 +41,29 @@ void LetterSelector::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
     painter->setBrush(Qt::transparent);
     painter->drawRect(boundingRect());
     painter->drawText(0,FONT_SIZE/2, _letter);
+}
+
+QPolygonF LetterSelector::bounds()
+{
+    return mapToScene(boundingRect());
+
+}
+
+QRectF LetterSelector::unrotatedBounds()
+{
+    //scale the bounds...
+    float newW = boundingRect().width() * _scale;
+    float newH = boundingRect().height() * _scale;
+
+    float eW = newW - boundingRect().width();
+    float eH = newH - boundingRect().height();
+
+    QRectF b(boundingRect().x() - eW/2, boundingRect().y() - eH/2, newW, newH);
+
+    // then move them to have them in scene coordinates
+    b.translate(scenePos());
+
+    return b;
 }
 
 void LetterSelector::wheelEvent(QGraphicsSceneWheelEvent *event)
