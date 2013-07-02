@@ -21,10 +21,7 @@ LetterSelector::LetterSelector(QGraphicsItem *parent)
     //setFlag(QGraphicsItem::ItemIsFocusable );
     setPos(600, 600);
 
-    QString alpha;
-    alpha.resize(1);
-    alpha[0] = QChar(0x03B1);
-    setLetter(alpha);
+
 }
 
 QRectF LetterSelector::boundingRect() const

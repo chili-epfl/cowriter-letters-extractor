@@ -7,6 +7,7 @@
 LettersWindow::LettersWindow(LettersManager& manager, QWidget *parent) :
     QMainWindow(parent),
     _canvas(&manager),
+    _manager(&manager),
     ui(new Ui::LettersWindow)
 {
     ui->setupUi(this);
@@ -19,4 +20,17 @@ LettersWindow::LettersWindow(LettersManager& manager, QWidget *parent) :
 LettersWindow::~LettersWindow()
 {
     delete ui;
+}
+
+void LettersWindow::on_selectLetterM_triggered()
+{
+    _manager->setActiveLetter("m");
+}
+
+void LettersWindow::on_selectLetterAlpha_triggered()
+{
+    QString alpha;
+    alpha.resize(1);
+    alpha[0] = QChar(0x03B1);
+    _manager->setActiveLetter(alpha);
 }

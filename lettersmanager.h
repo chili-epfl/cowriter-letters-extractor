@@ -10,6 +10,8 @@
 #include "lettersscene.h"
 #include "letterselector.h"
 
+enum Condition {UNDEFINED, PEERMODE, TUTORMODE};
+
 class LettersManager
 {
 public:
@@ -19,6 +21,7 @@ public:
     QGraphicsScene& scene() {return _scene;}
 
     void setInputSheet(const std::string& file);
+    void setActiveLetter(const QString& letter);
 
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
@@ -29,6 +32,11 @@ private:
     LettersManager(const LettersManager&);
     void init();
     LettersScene _scene;
+
+    int _activeGroup;
+    int _activeChild;
+    Condition _condition;
+    QString _activeLetter;
 
     QGraphicsPixmapItem* currentInputSheet;
     LetterSelector _selector;

@@ -36,6 +36,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="selectLetterM"/>
+   <addaction name="selectLetterAlpha"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dockWidget">
@@ -76,6 +77,23 @@
    </property>
    <property name="toolTip">
     <string>Select letter m</string>
+   </property>
+   <property name="shortcut">
+    <string>M</string>
+   </property>
+  </action>
+  <action name="selectLetterAlpha">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>α</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter α</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
    </property>
   </action>
  </widget>

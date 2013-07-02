@@ -1,3 +1,5 @@
+#include <sstream>
+#include <iostream>
 
 #include "lettersmanager.h"
 #include "lettersaver.h"
@@ -5,7 +7,10 @@
 using namespace std;
 
 LettersManager::LettersManager() :
-    _scene(this)
+    _scene(this),
+    _activeGroup(1),
+    _activeChild(1),
+    _condition(UNDEFINED)
 {
     setInputSheet("/home/lemaigna/Desktop/sample-letters.jpg");
 
@@ -20,6 +25,12 @@ LettersManager::~LettersManager()
 
 void LettersManager::setInputSheet(const string& file) {
     currentInputSheet = new QGraphicsPixmapItem(QPixmap(file.c_str()));
+}
+
+void LettersManager::setActiveLetter(const QString &letter)
+{
+    _activeLetter = letter;
+    _selector.setLetter(letter);
 }
 
 void LettersManager::keyPressEvent(QKeyEvent *event)
@@ -38,7 +49,10 @@ void LettersManager::keyReleaseEvent(QKeyEvent *event)
 
 void LettersManager::saveCurrentSelection()
 {
-    LetterSaver saver(scene(), "/home/lemaigna/toto.png");
+    stringstream name;
+    name << "./output/letters/g" << _activeGroup << "-c" << _activeChild << "-" << _activeLetter.toStdString() <<".png";
+    cout << "Saving to " << name.str() << endl;
+    LetterSaver saver(scene(), name.str());
     _selector.setVisible(false);
 
     //Rotate the letter sheet according to letter selector orientation
