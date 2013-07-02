@@ -23,6 +23,14 @@ private slots:
 
     void on_selectLetterAlpha_triggered();
 
+    void on_child_valueChanged(int arg1);
+
+    void on_group_valueChanged(int arg1);
+
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
 private:
     Ui::LettersWindow *ui;
 

@@ -8,9 +8,9 @@ using namespace std;
 
 LettersManager::LettersManager() :
     _scene(this),
-    _activeGroup(1),
-    _activeChild(1),
-    _condition(UNDEFINED)
+    activeGroup(1),
+    activeChild(1),
+    condition(UNDEFINED)
 {
     setInputSheet("/home/lemaigna/Desktop/sample-letters.jpg");
 
@@ -50,7 +50,7 @@ void LettersManager::keyReleaseEvent(QKeyEvent *event)
 void LettersManager::saveCurrentSelection()
 {
     stringstream name;
-    name << "./output/letters/g" << _activeGroup << "-c" << _activeChild << "-" << _activeLetter.toStdString() <<".png";
+    name << "./output/letters/g" << activeGroup << "-c" << activeChild << "-" << _activeLetter.toStdString() <<".png";
     cout << "Saving to " << name.str() << endl;
     LetterSaver saver(scene(), name.str());
     _selector.setVisible(false);

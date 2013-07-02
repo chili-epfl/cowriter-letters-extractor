@@ -28,14 +28,14 @@ public:
 	
 	void saveCurrentSelection();
 
+
+    int activeGroup;
+    int activeChild;
+    Condition condition;
 private:
     LettersManager(const LettersManager&);
     void init();
     LettersScene _scene;
-
-    int _activeGroup;
-    int _activeChild;
-    Condition _condition;
     QString _activeLetter;
 
     QGraphicsPixmapItem* currentInputSheet;

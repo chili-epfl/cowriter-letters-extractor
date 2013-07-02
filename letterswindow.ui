@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>LettersWindow</string>
+   <string>CoWriter - Letters Extractor</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
@@ -48,8 +48,59 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Group 1</string>
+        <string>Group:</string>
        </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="group">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Child:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="child">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Condition:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton">
+       <property name="text">
+        <string>Peer learning</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">condition</string>
+       </attribute>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton_2">
+       <property name="text">
+        <string>Tutor learning</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">condition</string>
+       </attribute>
       </widget>
      </item>
      <item>
@@ -100,4 +151,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="condition"/>
+ </buttongroups>
 </ui>
