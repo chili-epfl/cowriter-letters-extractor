@@ -10,7 +10,7 @@ LetterCanvas::LetterCanvas(LettersManager *manager, QWidget *parent) :
     _manager(manager)
 {
 
-    //setDragMode(QGraphicsView::ScrollHandDrag);
+    fitInView(_manager->scene().sceneRect(), Qt::KeepAspectRatio);
     setRenderHints( QPainter::Antialiasing );
     show();
 }
