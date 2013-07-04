@@ -59,6 +59,7 @@ void LetterCanvas::mouseMoveEvent(QMouseEvent *event) {
         return;
     }
 
+    setFocus();
     _manager->placeSelector(mapToScene(event->pos()));
     QGraphicsView::mouseMoveEvent(event);
 }
