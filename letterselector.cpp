@@ -12,21 +12,19 @@ using namespace std;
 LetterSelector::LetterSelector(QGraphicsItem *parent)
     : QGraphicsObject(parent),
       _rotation(0), _scale(1.0),
-      font(QFont().defaultFamily(), FONT_SIZE)
+      font(QFont().defaultFamily(), FONT_SIZE),
+    _letterPixmap(":/letters/alpha")
 {
 
     _ratio = boundingRect().width() / boundingRect().height();
 
     setAcceptHoverEvents(true);
-    //setFlag(QGraphicsItem::ItemIsFocusable );
-    setPos(600, 600);
-
 
 }
 
 QRectF LetterSelector::boundingRect() const
 {
-    return QRectF(-75, -100, 150, 200);
+    return QRectF(-100, -100, 200, 200);
 }
 
 void LetterSelector::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -38,8 +36,12 @@ void LetterSelector::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
     painter->setBrush(Qt::transparent);
     painter->setPen(Qt::red);
     painter->drawRect(boundingRect());
-    painter->setPen(Qt::black);
-    painter->drawText(0,FONT_SIZE/2, _letter);
+    painter->drawPixmap(boundingRect(),_letterPixmap, _letterPixmap.rect());
+}
+
+void LetterSelector::setLetter(const QString &letter)
+{
+    _letterPixmap = QPixmap(":/letters/" + letter);
 }
 
 QPolygonF LetterSelector::bounds()

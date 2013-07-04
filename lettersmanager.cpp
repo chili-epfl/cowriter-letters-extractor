@@ -7,7 +7,8 @@
 
 using namespace std;
 
-LettersManager::LettersManager() :
+LettersManager::LettersManager(QObject *parent) :
+    QObject(parent),
     _scene(this),
     sheets("./input"),
     activeGroup(1),
@@ -15,9 +16,16 @@ LettersManager::LettersManager() :
     condition(UNDEFINED)
 {
 
+    setActiveLetter(letters.next().c_str());
     _scene.addItem(&_selector);
+
+    // dummy background to ensure we have a initial sheet to remove when calling setInputSheet
+    currentInputSheet = new QGraphicsPixmapItem(QPixmap(":/letters/alpha"));
+    _scene.addItem(currentInputSheet);
+
     nextSheet();
     _scene.setSceneRect(_scene.sceneRect());
+
 }
 
 LettersManager::~LettersManager()
@@ -26,13 +34,14 @@ LettersManager::~LettersManager()
 }
 
 void LettersManager::setInputSheet(const string& file) {
+
     _scene.removeItem(currentInputSheet);
     currentInputSheet = new QGraphicsPixmapItem(QPixmap(file.c_str()));
     _scene.addItem(currentInputSheet);
     currentInputSheet->stackBefore(&_selector);
 }
 
-void LettersManager::setActiveLetter(const QString &letter)
+void LettersManager::setActiveLetter(QString letter)
 {
     _activeLetter = letter;
     _selector.setLetter(letter);
@@ -42,6 +51,8 @@ void LettersManager::nextSheet()
 {
     if(sheets.hasNext()) {
         setInputSheet(sheets.next());
+        activeGroup++;
+        emit groupChanged(activeGroup);
     }
     else {
         QMessageBox dialog;
@@ -80,6 +91,9 @@ void LettersManager::saveCurrentSelection()
 
     currentInputSheet->setRotation(0);
 
+    if (letters.hasNext()) {
+        setActiveLetter(letters.next().c_str());
+    }
     _selector.setVisible(true);
 
 }

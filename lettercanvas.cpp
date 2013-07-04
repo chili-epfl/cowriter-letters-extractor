@@ -45,6 +45,9 @@ void LetterCanvas::mousePressEvent(QMouseEvent *event) {
     else if (event->button() == Qt::LeftButton) {
         _manager->saveCurrentSelection();
 	}
+    else if (event->button() == Qt::RightButton) {
+        _manager->nextSheet();
+    }
     QGraphicsView::mousePressEvent(event);
 }
 

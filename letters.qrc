@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/letters">
+        <file alias="alpha">res/a.png</file>
+        <file alias="b">res/b.png</file>
+        <file alias="j">res/j.png</file>
+        <file alias="m">res/m.png</file>
+        <file alias="N">res/N.png</file>
+        <file alias="pi">res/p.png</file>
+        <file alias="Q">res/Q.png</file>
+        <file alias="S">res/S.png</file>
+        <file alias="y">res/y.png</file>
+    </qresource>
+</RCC>

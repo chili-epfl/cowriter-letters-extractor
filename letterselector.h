@@ -16,7 +16,7 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    void setLetter(const QString& letter) {_letter = letter;}
+    void setLetter(const QString& letter);
     void doScaling(bool state) {isScaling = state;}
 
     float rotation() const {return _rotation;}
@@ -35,6 +35,7 @@ private:
     bool isScaling = false;
     float _rotation, _scale, _ratio;
     QString _letter;
+    QPixmap _letterPixmap;
 
     QPointF _reference, _centerCursor;
     QFont font;

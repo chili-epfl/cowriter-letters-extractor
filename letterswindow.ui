@@ -28,15 +28,15 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
+  <widget class="QToolBar" name="letters">
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="selectLetterM"/>
    <addaction name="selectLetterAlpha"/>
+   <addaction name="selectLetterM"/>
    <addaction name="selectLetterY"/>
    <addaction name="selectLetterJ"/>
    <addaction name="selectLetterN"/>
@@ -88,7 +88,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_3">
+      <widget class="QRadioButton" name="pretest">
        <property name="text">
         <string>Pre-test</string>
        </property>
@@ -101,7 +101,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton">
+      <widget class="QRadioButton" name="peer">
        <property name="text">
         <string>Peer learning</string>
        </property>
@@ -114,7 +114,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="tutor">
        <property name="text">
         <string>Tutor learning</string>
        </property>
@@ -124,7 +124,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_4">
+      <widget class="QRadioButton" name="posttest">
        <property name="text">
         <string>Post-test</string>
        </property>
@@ -158,10 +158,10 @@
   </widget>
   <action name="selectLetterM">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="checked">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>m</string>
@@ -175,7 +175,7 @@
   </action>
   <action name="selectLetterAlpha">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>α</string>
@@ -189,7 +189,7 @@
   </action>
   <action name="selectLetterY">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>y</string>
@@ -203,7 +203,7 @@
   </action>
   <action name="selectLetterJ">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>j</string>
@@ -217,7 +217,7 @@
   </action>
   <action name="selectLetterN">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>N</string>
@@ -231,7 +231,7 @@
   </action>
   <action name="selectLetterPi">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>π</string>
@@ -245,7 +245,7 @@
   </action>
   <action name="selectLetterQ">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>Q</string>
@@ -259,7 +259,7 @@
   </action>
   <action name="selectLetterS">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>S</string>
@@ -273,7 +273,7 @@
   </action>
   <action name="selectLetterB">
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>b</string>

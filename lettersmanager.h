@@ -10,19 +10,22 @@
 #include "lettersscene.h"
 #include "letterselector.h"
 #include "sheets.h"
+#include "letters.h"
 
 enum Condition {UNDEFINED, PRETEST, PEERMODE, TUTORMODE, POSTTEST};
 
-class LettersManager
+class LettersManager : public QObject
 {
+    Q_OBJECT
+
 public:
-    LettersManager();
+    LettersManager(QObject *parent = 0);
     ~LettersManager();
 
     QGraphicsScene& scene() {return _scene;}
 
     void setInputSheet(const std::string& file);
-    void setActiveLetter(const QString& letter);
+    void setActiveLetter(QString letter);
     void nextSheet();
 
     void keyPressEvent(QKeyEvent *event);
@@ -31,10 +34,15 @@ public:
     void placeSelector(const QPointF& pos) {_selector.setPos(pos);}
 	void saveCurrentSelection();
 
-
     int activeGroup;
     int activeChild;
     Condition condition;
+
+signals:
+    void groupChanged(int);
+    void childChanged(int);
+    void conditionChanged(int);
+
 private:
     LettersManager(const LettersManager&);
     LettersScene _scene;
@@ -43,6 +51,7 @@ private:
     QGraphicsPixmapItem* currentInputSheet;
     LetterSelector _selector;
     Sheets sheets;
+    Letters letters;
 };
 
 #endif // LETTERSMANAGER_H

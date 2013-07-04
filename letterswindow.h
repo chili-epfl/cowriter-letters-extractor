@@ -2,6 +2,7 @@
 #define LETTERSWINDOW_H
 
 #include <QMainWindow>
+#include <QToolBar>
 
 #include "lettersmanager.h"
 #include "lettercanvas.h"
@@ -17,6 +18,11 @@ class LettersWindow : public QMainWindow
 public:
     explicit LettersWindow(LettersManager& manager, QWidget *parent = 0);
     ~LettersWindow();
+
+public slots:
+    void setGroup(int);
+    void setChild(int);
+    void setCondition(Condition);
 
 private slots:
     void on_selectLetterM_triggered();
@@ -53,6 +59,9 @@ private slots:
 
 private:
     Ui::LettersWindow *ui;
+
+    void uncheckAllLetters();
+    QToolBar* lettersBar;
 
     LetterCanvas _canvas;
     LettersManager* _manager;
