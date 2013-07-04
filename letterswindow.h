@@ -31,6 +31,26 @@ private slots:
 
     void on_radioButton_2_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_radioButton_3_clicked();
+
+    void on_radioButton_4_clicked();
+
+    void on_selectLetterY_triggered();
+
+    void on_selectLetterJ_triggered();
+
+    void on_selectLetterN_triggered();
+
+    void on_selectLetterPi_triggered();
+
+    void on_selectLetterQ_triggered();
+
+    void on_selectLetterS_triggered();
+
+    void on_selectLetterB_triggered();
+
 private:
     Ui::LettersWindow *ui;
 

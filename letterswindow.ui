@@ -37,6 +37,13 @@
    </attribute>
    <addaction name="selectLetterM"/>
    <addaction name="selectLetterAlpha"/>
+   <addaction name="selectLetterY"/>
+   <addaction name="selectLetterJ"/>
+   <addaction name="selectLetterN"/>
+   <addaction name="selectLetterQ"/>
+   <addaction name="selectLetterPi"/>
+   <addaction name="selectLetterS"/>
+   <addaction name="selectLetterB"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QDockWidget" name="dockWidget">
@@ -81,9 +88,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton">
+      <widget class="QRadioButton" name="radioButton_3">
        <property name="text">
-        <string>Peer learning</string>
+        <string>Pre-test</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -94,9 +101,32 @@
       </widget>
      </item>
      <item>
+      <widget class="QRadioButton" name="radioButton">
+       <property name="text">
+        <string>Peer learning</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">condition</string>
+       </attribute>
+      </widget>
+     </item>
+     <item>
       <widget class="QRadioButton" name="radioButton_2">
        <property name="text">
         <string>Tutor learning</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">condition</string>
+       </attribute>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton_4">
+       <property name="text">
+        <string>Post-test</string>
        </property>
        <attribute name="buttonGroup">
         <string notr="true">condition</string>
@@ -116,11 +146,21 @@
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Next sheet</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
   <action name="selectLetterM">
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="text">
@@ -145,6 +185,104 @@
    </property>
    <property name="shortcut">
     <string>A</string>
+   </property>
+  </action>
+  <action name="selectLetterY">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>y</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter y</string>
+   </property>
+   <property name="shortcut">
+    <string>Y</string>
+   </property>
+  </action>
+  <action name="selectLetterJ">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>j</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter j</string>
+   </property>
+   <property name="shortcut">
+    <string>J</string>
+   </property>
+  </action>
+  <action name="selectLetterN">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>N</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter N</string>
+   </property>
+   <property name="shortcut">
+    <string>N</string>
+   </property>
+  </action>
+  <action name="selectLetterPi">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>π</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter π</string>
+   </property>
+   <property name="shortcut">
+    <string>P</string>
+   </property>
+  </action>
+  <action name="selectLetterQ">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Q</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter Q</string>
+   </property>
+   <property name="shortcut">
+    <string>Q</string>
+   </property>
+  </action>
+  <action name="selectLetterS">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>S</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter S</string>
+   </property>
+   <property name="shortcut">
+    <string>S</string>
+   </property>
+  </action>
+  <action name="selectLetterB">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>b</string>
+   </property>
+   <property name="toolTip">
+    <string>Select letter b</string>
+   </property>
+   <property name="shortcut">
+    <string>B</string>
    </property>
   </action>
  </widget>
