@@ -1,5 +1,6 @@
 #include <sstream>
 #include <iostream>
+#include <QMessageBox>
 
 #include "lettersmanager.h"
 #include "lettersaver.h"
@@ -8,14 +9,15 @@ using namespace std;
 
 LettersManager::LettersManager() :
     _scene(this),
+    sheets("./input"),
     activeGroup(1),
     activeChild(1),
     condition(UNDEFINED)
 {
-    setInputSheet("/home/lemaigna/Desktop/sample-letters.jpg");
 
-    init();
-
+    _scene.addItem(&_selector);
+    nextSheet();
+    _scene.setSceneRect(_scene.sceneRect());
 }
 
 LettersManager::~LettersManager()
@@ -24,13 +26,28 @@ LettersManager::~LettersManager()
 }
 
 void LettersManager::setInputSheet(const string& file) {
+    _scene.removeItem(currentInputSheet);
     currentInputSheet = new QGraphicsPixmapItem(QPixmap(file.c_str()));
+    _scene.addItem(currentInputSheet);
+    currentInputSheet->stackBefore(&_selector);
 }
 
 void LettersManager::setActiveLetter(const QString &letter)
 {
     _activeLetter = letter;
     _selector.setLetter(letter);
+}
+
+void LettersManager::nextSheet()
+{
+    if(sheets.hasNext()) {
+        setInputSheet(sheets.next());
+    }
+    else {
+        QMessageBox dialog;
+        dialog.setText("No more sheets to process.");
+        dialog.exec();
+    }
 }
 
 void LettersManager::keyPressEvent(QKeyEvent *event)
@@ -65,14 +82,5 @@ void LettersManager::saveCurrentSelection()
 
     _selector.setVisible(true);
 
-}
-
-
-void LettersManager::init()
-{
-    //scene.setSceneRect( -100.0, -100.0, 200.0, 200.0 );
-    _scene.addItem(currentInputSheet);
-    _scene.addRect(QRectF(0, 0, 210,200), QColor::fromRgbF(0.,1.,1.));
-    _scene.addItem(&_selector);
 }
 
