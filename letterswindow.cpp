@@ -74,44 +74,6 @@ void LettersWindow::on_selectLetterAlpha_triggered()
     //alpha[0] = QChar(0x03B1);
     _manager->setActiveLetter("alpha");
 }
-
-void LettersWindow::on_child_valueChanged(int arg1)
-{
-   _manager->activeChild = arg1;
-}
-
-void LettersWindow::on_group_valueChanged(int arg1)
-{
-    _manager->activeGroup = arg1;
-}
-
-
-void LettersWindow::on_radioButton_clicked()
-{
-    _manager->condition = PEERMODE;
-}
-
-void LettersWindow::on_radioButton_2_clicked()
-{
-    _manager->condition = TUTORMODE;
-
-}
-
-void LettersWindow::on_pushButton_clicked()
-{
-    _manager->nextSheet();
-}
-
-void LettersWindow::on_radioButton_3_clicked()
-{
-    _manager->condition = PRETEST;
-}
-
-void LettersWindow::on_radioButton_4_clicked()
-{
-    _manager->condition = POSTTEST;
-}
-
 void LettersWindow::on_selectLetterY_triggered()
 {
     statusBar()->showMessage("Active: y");
@@ -163,4 +125,47 @@ void LettersWindow::uncheckAllLetters()
     QList<QAction *>::iterator i;
      for (i = letters.begin(); i != letters.end(); ++i)
          (*i)->setEnabled(false);
+}
+
+void LettersWindow::on_child_valueChanged(int arg1)
+{
+   _manager->activeChild = arg1;
+}
+
+void LettersWindow::on_group_valueChanged(int arg1)
+{
+    _manager->activeGroup = arg1;
+}
+
+
+
+void LettersWindow::on_pushButton_clicked()
+{
+    _manager->nextSheet();
+}
+
+
+
+void LettersWindow::on_pretest_clicked()
+{
+    _manager->activeCondition = PRETEST;
+
+}
+
+void LettersWindow::on_peer_clicked()
+{
+    _manager->activeCondition = PEERMODE;
+
+}
+
+void LettersWindow::on_tutor_clicked()
+{
+    _manager->activeCondition = TUTORMODE;
+
+}
+
+void LettersWindow::on_posttest_clicked()
+{
+    _manager->activeCondition = POSTTEST;
+
 }
