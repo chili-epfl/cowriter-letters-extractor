@@ -31,5 +31,3 @@ HEADERS  += letterswindow.h \
 
 FORMS    += letterswindow.ui
 
-RESOURCES += \
-    res.qrc
