@@ -43,7 +43,14 @@ void LetterCanvas::mousePressEvent(QMouseEvent *event) {
     }
     // save a bitmap
     else if (event->button() == Qt::LeftButton) {
-        _manager->saveCurrentSelection();
+        if (event->modifiers() == Qt::SHIFT) // when pressing SHIFT while saving a letter, do not switch to the next one
+        {
+            _manager->saveCurrentSelection(false);
+        }
+        else
+        {
+            _manager->saveCurrentSelection(true);
+        }
 	}
     else if (event->button() == Qt::RightButton) {
         _manager->nextSheet();

@@ -4,6 +4,7 @@
 
 #include "lettersaver.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -16,17 +17,26 @@ LetterSaver::LetterSaver(QGraphicsScene& scene, const string& filename)
 void LetterSaver::save(const QRectF& bounds)
 {
 
-        float ratio = bounds.width() / bounds.height();
+    float ratio = bounds.width() / bounds.height();
 
-        QImage image(OUTPUT_HEIGHT * ratio,OUTPUT_HEIGHT, QImage::Format_ARGB32);
-        QPainter painter(&image);
-        painter.setRenderHint(QPainter::Antialiasing);
+    QImage image(OUTPUT_HEIGHT * ratio,OUTPUT_HEIGHT, QImage::Format_ARGB32);
+    QPainter painter(&image);
 
-        // fill the bg with black
-        painter.fillRect(QRectF(0,0,OUTPUT_HEIGHT * ratio,OUTPUT_HEIGHT), Qt::black);
+    _scene.render(&painter, QRectF(), bounds);
 
-        _scene.render(&painter, QRectF(), bounds);
+    string filename = safeName();
+    image.save(filename.c_str());
 
-        image.save(_name.c_str());
+    cout << "Saving to " << filename << endl;
+}
 
+string LetterSaver::safeName()
+{
+    ifstream test(EXPORT_PATH + _name + "." + OUTPUT_EXTENSION );
+    if (test.good()) // file already exists!
+    {
+        _name += "#";
+        return safeName();
+    }
+    return EXPORT_PATH + _name + "." + OUTPUT_EXTENSION;
 }

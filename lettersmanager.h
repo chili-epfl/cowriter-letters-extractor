@@ -32,11 +32,11 @@ public:
     void keyReleaseEvent(QKeyEvent *event);
 	
     void placeSelector(const QPointF& pos) {_selector.setPos(pos);}
-	void saveCurrentSelection();
+    void saveCurrentSelection(bool switchToNextLetter = true);
 
     int activeGroup;
     int activeChild;
-    Condition condition;
+    Condition activeCondition;
 
 signals:
     void groupChanged(int);

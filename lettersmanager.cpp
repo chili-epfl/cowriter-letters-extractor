@@ -13,7 +13,7 @@ LettersManager::LettersManager(QObject *parent) :
     sheets("./input"),
     activeGroup(1),
     activeChild(1),
-    condition(UNDEFINED)
+    activeCondition(UNDEFINED)
 {
 
     setActiveLetter(letters.next().c_str());
@@ -75,11 +75,10 @@ void LettersManager::keyReleaseEvent(QKeyEvent *event)
     _selector.doScaling(false);
 }
 
-void LettersManager::saveCurrentSelection()
+void LettersManager::saveCurrentSelection(bool switchToNextLetter)
 {
     stringstream name;
-    name << "./output/letters/g" << activeGroup << "-c" << activeChild << "-" << _activeLetter.toStdString() <<".png";
-    cout << "Saving to " << name.str() << endl;
+    name << "g" << activeGroup << "-cdt" << activeCondition << "-c" << activeChild << "-" << _activeLetter.toStdString();
     LetterSaver saver(scene(), name.str());
     _selector.setVisible(false);
 
@@ -91,7 +90,7 @@ void LettersManager::saveCurrentSelection()
 
     currentInputSheet->setRotation(0);
 
-    if (letters.hasNext()) {
+    if (switchToNextLetter && letters.hasNext()) {
         setActiveLetter(letters.next().c_str());
     }
     _selector.setVisible(true);

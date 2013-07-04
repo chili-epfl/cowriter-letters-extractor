@@ -5,7 +5,6 @@ LettersScene::LettersScene(LettersManager *manager, QObject *parent) :
     QGraphicsScene(parent),
     _manager(manager)
 {
-
 }
 
 void LettersScene::keyPressEvent(QKeyEvent *event)
