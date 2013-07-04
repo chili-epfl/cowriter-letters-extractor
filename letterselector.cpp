@@ -36,7 +36,9 @@ void LetterSelector::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
 
     painter->setFont(font);
     painter->setBrush(Qt::transparent);
+    painter->setPen(Qt::red);
     painter->drawRect(boundingRect());
+    painter->setPen(Qt::black);
     painter->drawText(0,FONT_SIZE/2, _letter);
 }
 
@@ -74,14 +76,5 @@ void LetterSelector::wheelEvent(QGraphicsSceneWheelEvent *event)
         _rotation += event->delta()/240. * 3;
         setRotation(_rotation);
     }
-}
-
-
-void LetterSelector::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
-{
-    //QPointF move = _reference - mapToScene(event->pos());
-    //setPos(pos() + move);
-
-    setPos(mapToScene(event->pos()));
 }
 

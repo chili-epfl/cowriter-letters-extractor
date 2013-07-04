@@ -30,7 +30,6 @@ public:
 
 protected:
     void wheelEvent(QGraphicsSceneWheelEvent *event);
-    void hoverMoveEvent(QGraphicsSceneHoverEvent *event);
 
 private:
     bool isScaling = false;

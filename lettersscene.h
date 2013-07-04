@@ -1,6 +1,7 @@
 #ifndef LETTERSSCENE_H
 #define LETTERSSCENE_H
 
+#include <QGraphicsSceneMouseEvent>
 #include <QGraphicsScene>
 
 class LettersManager;

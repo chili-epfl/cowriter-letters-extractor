@@ -1,6 +1,7 @@
 #include <QWheelEvent>
 #include <math.h>
 #include <QApplication>
+#include <QCursor>
 
 #include "lettercanvas.h"
 
@@ -10,9 +11,11 @@ LetterCanvas::LetterCanvas(LettersManager *manager, QWidget *parent) :
     _manager(manager)
 {
 
+    setCursor(QCursor(Qt::BlankCursor));
     fitInView(_manager->scene().sceneRect(), Qt::KeepAspectRatio);
     setRenderHints( QPainter::Antialiasing );
     show();
+    setFocus(Qt::OtherFocusReason);
 }
 
 void LetterCanvas::wheelEvent(QWheelEvent *event)
@@ -41,9 +44,7 @@ void LetterCanvas::mousePressEvent(QMouseEvent *event) {
     // save a bitmap
     else if (event->button() == Qt::LeftButton) {
         _manager->saveCurrentSelection();
-		
 	}
-	
     QGraphicsView::mousePressEvent(event);
 }
 
@@ -55,6 +56,7 @@ void LetterCanvas::mouseMoveEvent(QMouseEvent *event) {
         return;
     }
 
+    _manager->placeSelector(mapToScene(event->pos()));
     QGraphicsView::mouseMoveEvent(event);
 }
 
